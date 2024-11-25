@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+</head>
+<body>
+    <h1>Đăng Nhập</h1>
+    <!-- Hiển thị thông báo flash nếu có -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li style="color: red;">{{ message }}</li> <!-- Hiển thị thông báo lỗi màu đỏ -->
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        <button type="submit">Đăng Nhập</button>
+    </form>
+    <a href="{{ url_for('register') }}">Chưa có tài khoản? Đăng ký ngay!</a>
+</body>
+</html>
